@@ -1,0 +1,23 @@
+{
+  "name": "redditclone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cembreyfarquhar/redditclone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cembreyfarquhar/redditclone/issues"
+  },
+  "homepage": "https://github.com/cembreyfarquhar/redditclone#readme",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}
