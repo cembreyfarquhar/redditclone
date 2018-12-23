@@ -1,4 +1,5 @@
 import React from "react";
+import "./navBar.css";
 
 class SearchBar extends React.Component {
   constructor() {
@@ -7,14 +8,21 @@ class SearchBar extends React.Component {
       searchText: ""
     };
   }
+
+  changeHandler = ev => {
+    this.setState({
+      [ev.target.name]: ev.target.value
+    });
+  };
   render() {
     return (
-      <div>
+      <div className="searchBar">
         <form>
           <input
             type="text"
-            name="search"
+            name="searchText"
             value={this.state.searchText}
+            onChange={this.changeHandler}
             placeholder="Search Reddit"
           />
         </form>

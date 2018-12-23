@@ -1,8 +1,133 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 .navBar {
     width: 100%;
     display: flex;
+    background: white;
 }
 .navBar img{
-    width: 50px;
+    width: 32px;
+    height: 32px;
+    padding: 8px 8px 8px 0;
+    margin-left: 20px;
+}
+
+.navBar h1 {
+    font-size: 24px;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.dropDownSearch {
+    width: 230px;
+    padding-left: 40px;
+    padding-top: 10px;
+    display: flex;
+}
+
+.searchBar form input {
+    height: 36px;
+    padding: 0px 16px 0px 40px;
+    width: 570px;
+    margin: 10px 16px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgb(237, 239, 241);
+    background-color: #F6F7F8;
+}
+
+.searchIcons {
+    width: 112px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+.searchIcons span {
+    width: 32px;
+    height: 32px;
+}
+
+.userIcons {
+    width: 112px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+.userIcons span {
+    width: 32px;
+    height: 32px;
+}
+
+.user {
+    width: 205px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.user h2, p {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.signUpButtonDiv {
+    display: flex;
+    align-items: center;
+}
+
+.signUpButton {
+    width: 150px;
     height: 50px;
+    background: blue;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 24px;
 }

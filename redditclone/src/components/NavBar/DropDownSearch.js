@@ -1,4 +1,5 @@
 import React from "react";
+import "./navBar.css";
 
 class DropDownSearch extends React.Component {
   constructor() {

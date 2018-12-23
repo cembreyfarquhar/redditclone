@@ -1,4 +1,5 @@
 import React from "react";
+import "./navBar.css"
 
 class User extends React.Component {
   constructor() {

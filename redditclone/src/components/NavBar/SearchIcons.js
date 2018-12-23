@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { faToggleOn } from '@fortawesome/free-solid-svg-icons'
+import "./navBar.css"
+
 
 
 library.add(faAngleDoubleUp)
