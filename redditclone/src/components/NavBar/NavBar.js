@@ -23,7 +23,7 @@ class NavBar extends React.Component {
         <SearchBar />
         <SearchIcons />
         <UserIcons />
-        <User />
+        <User user={this.props.user} />
       </header>
     );
   }

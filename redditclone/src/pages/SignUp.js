@@ -10,14 +10,14 @@ class SignUp extends React.Component {
       <div className="signUpPage">
         <form className="signUpForm">
           <h2>Username</h2>
-          <input type="text" name="username" value={this.props.usernameText} />
+          <input onChange={this.props.changeHandler} type="text" name="usernameText" value={this.props.usernameText} />
           <h2>Password</h2>
-          <input type="text" name="password" value={this.props.passwordText} />
+          <input onChange={this.props.changeHandler} type="text" name="passwordText" value={this.props.passwordText} />
           <br />
           <button
             onClick={ev => this.props.signUp(ev)}
             type="Submit"
-            name="Submit"
+            name="submit"
           >
             Sign up
           </button>

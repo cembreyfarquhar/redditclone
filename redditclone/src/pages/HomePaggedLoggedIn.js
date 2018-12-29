@@ -8,11 +8,12 @@ class HomePageLoggedIn extends React.Component {
       <div className="App">
         <header className="App-header">
           <div className="main-div">
-            <NavBar />
+            <NavBar user={this.props.user} />
           </div>
         </header>
         <PostCardContainer />
         <h2>Logged In</h2>
+        <button onClick={this.props.consoleTest}>Test user info!</button>
       </div>
     );
   }

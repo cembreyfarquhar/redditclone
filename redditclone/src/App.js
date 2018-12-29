@@ -13,31 +13,47 @@ class App extends Component {
       loggedIn: false,
       usernameText: "",
       passwordText: "",
-      user: ""
+      user: {}
     };
   }
   signUp = (ev, req, res) => {
     ev.preventDefault();
-    console.log("Helloo");
     axios
       .post("http://localhost:3300/api/register", {
         username: this.state.usernameText,
         password: this.state.passwordText
       })
-      .then(ids => {
-        localStorage.setItem("user", toString(res.data.id));
+      .then(res => {
+        console.log(String(res.data));
+        localStorage.setItem("user", String(res.data));
       })
       .catch(err => {
-        res.status(500).json({ message: err + "error signing up" });
+        console.log(err);
       });
     this.setState({
       loggedIn: true
     });
     this.props.history.push("/");
+    setTimeout(() => this.getUserData(), 2000);
   };
   changeHandler = ev => {
     this.setState({
       [ev.target.name]: ev.target.value
+    });
+  };
+  consoleTest = () => {
+    const userId = localStorage.getItem("user");
+    console.log("User ID: ", userId);
+    axios
+      .get("http://localhost:3300/api/userInfo")
+      .then(res => console.log(res.data[userId - 1]));
+  };
+  getUserData = () => {
+    const userId = localStorage.getItem("user");
+    console.log("User ID: ", userId);
+    axios.get("http://localhost:3300/api/userInfo").then(res => {
+      console.log(res.data[userId - 1]);
+      this.setState({ user: res.data[userId - 1] });
     });
   };
   render() {
@@ -48,7 +64,13 @@ class App extends Component {
             to
             exact
             path="/"
-            render={props => <HomePageLoggedIn {...props} />}
+            render={props => (
+              <HomePageLoggedIn
+                {...props}
+                consoleTest={this.consoleTest}
+                user={this.state.user}
+              />
+            )}
           />
         </div>
       );
@@ -65,7 +87,15 @@ class App extends Component {
             to
             exact
             path="/signup"
-            render={props => <SignUp {...props} signUp={this.signUp} />}
+            render={props => (
+              <SignUp
+                {...props}
+                signUp={this.signUp}
+                changeHandler={this.changeHandler}
+                usernameText={this.state.usernameText}
+                passwordText={this.state.passwordText}
+              />
+            )}
           />
         </div>
       );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./navBar.css"
+import "./navBar.css";
 
 class User extends React.Component {
   constructor() {
@@ -9,7 +9,7 @@ class User extends React.Component {
   render() {
     return (
       <div className="user">
-        <h2>UserName</h2>
+        <h2>{this.props.user.username}</h2>
         <p>10 karma</p>
       </div>
     );
