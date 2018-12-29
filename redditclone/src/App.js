@@ -5,6 +5,7 @@ import axios from "axios";
 import HomePageLoggedOut from "./pages/HomePageLoggedOut";
 import HomePageLoggedIn from "./pages/HomePaggedLoggedIn";
 import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 class App extends Component {
   constructor() {
@@ -35,6 +36,20 @@ class App extends Component {
     });
     this.props.history.push("/");
     setTimeout(() => this.getUserData(), 2000);
+  };
+  login = (ev, req, res) => {
+    ev.preventDefault();
+    axios
+      .post("http://localhost:3300/api/login", {
+        username: this.state.usernameText,
+        password: this.state.passwordText
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   changeHandler = ev => {
     this.setState({
@@ -94,6 +109,20 @@ class App extends Component {
                 changeHandler={this.changeHandler}
                 usernameText={this.state.usernameText}
                 passwordText={this.state.passwordText}
+              />
+            )}
+          />
+          <Route
+            to
+            exact
+            path="/login"
+            render={props => (
+              <Login
+                {...props}
+                login={this.login}
+                changeHandler={this.changeHandler}
+                usernameText={this.usernameText}
+                passwordText={this.passwordText}
               />
             )}
           />

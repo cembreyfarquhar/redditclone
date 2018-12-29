@@ -3,6 +3,7 @@ import "./navBar.css";
 import SearchBar from "./SearchBar";
 import SearchIcons from "./SearchIcons";
 import SignUpButton from "./SignUpButton";
+import SignInButton from "./SignInButton";
 
 class NavBarLoggedOut extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ class NavBarLoggedOut extends React.Component {
         <SearchBar />
         <SearchIcons />
         <SignUpButton signUp={this.props.signUpButton} />
+        <SignInButton signIn={this.props.signInButton} />
       </header>
     );
   }

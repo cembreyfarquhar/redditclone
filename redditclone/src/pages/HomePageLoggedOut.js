@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import PostCardContainer from "../components/PostCard/PostCardContainer";
 import NavBarLoggedOut from "../components/NavBar/NavBarLoggedOut.js";
 
@@ -15,6 +15,10 @@ class HomePageLoggedOut extends React.Component {
     ev.preventDefault();
     this.props.history.push("/signup");
   };
+  signInButton = ev => {
+    ev.preventDefault();
+    this.props.history.push("/login")
+  }
   changeHandler = ev => {
     this.setState({
       [ev.target.name]: ev.target.value
@@ -30,6 +34,7 @@ class HomePageLoggedOut extends React.Component {
               username={this.state.usernameText}
               password={this.state.passwordText}
               signUp={this.signUp}
+              signInButton={this.signInButton}
             />
           </div>
         </header>
