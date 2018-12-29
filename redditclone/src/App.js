@@ -31,9 +31,9 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
-    this.setState({
-      loggedIn: true
-    });
+    // this.setState({
+    //   loggedIn: true
+    // });
     this.props.history.push("/");
     setTimeout(() => this.getUserData(), 2000);
   };
@@ -45,7 +45,9 @@ class App extends Component {
         password: this.state.passwordText
       })
       .then(res => {
-        console.log(res.data);
+        console.log(res.data.token);
+        localStorage.setItem("token", String(res.data.token));
+        this.props.history.push("/");
       })
       .catch(err => {
         console.log(err);
@@ -71,6 +73,20 @@ class App extends Component {
       this.setState({ user: res.data[userId - 1] });
     });
   };
+  componentWillMount() {
+    axios.get("http://localhost:3300/api/verify").then(res => {
+      console.log(res);
+      if (res.data.verified) {
+        this.setState({
+          loggedIn: true
+        });
+      } else {
+        this.setState({
+          loggedIn: false
+        });
+      }
+    });
+  }
   render() {
     if (this.state.loggedIn) {
       return (
