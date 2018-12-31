@@ -6,6 +6,7 @@ import HomePageLoggedOut from "./pages/HomePageLoggedOut";
 import HomePageLoggedIn from "./pages/HomePaggedLoggedIn";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import CreateSubreddit from "./pages/CreateSubreddit";
 
 class App extends Component {
   constructor() {
@@ -74,7 +75,7 @@ class App extends Component {
   componentWillMount() {
     this.getUserData();
     this.setState({
-      loggedIn: localStorage.getItem("user").length > 0 ? true : false
+      loggedIn: this.state.user != {} ? true : false
     });
   }
   render() {
@@ -131,6 +132,12 @@ class App extends Component {
                 passwordText={this.passwordText}
               />
             )}
+          />
+          <Route
+            to
+            exact
+            path="/r/create"
+            render={props => <CreateSubreddit {...props} />}
           />
         </div>
       );
