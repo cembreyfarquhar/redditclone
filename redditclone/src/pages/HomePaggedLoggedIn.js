@@ -8,7 +8,7 @@ class HomePageLoggedIn extends React.Component {
       <div className="App">
         <header className="App-header">
           <div className="main-div">
-            <NavBar user={this.props.user} />
+            <NavBar user={this.props.user} logout={this.props.logout} />
           </div>
         </header>
         <PostCardContainer />

@@ -14,8 +14,7 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       usernameText: "",
-      passwordText: "",
-      user: {}
+      passwordText: ""
     };
   }
   signUp = (ev, req, res) => {
@@ -44,6 +43,9 @@ class App extends Component {
       })
       .then(res => {
         localStorage.setItem("token", String(res.data.token));
+        localStorage.setItem("user", String(res.data.user));
+        console.log(res.data);
+        console.log(localStorage.getItem("user"));
         this.props.history.push("/");
       })
       .catch(err => {
@@ -65,21 +67,39 @@ class App extends Component {
   getUserData = () => {
     const userId = localStorage.getItem("user");
     console.log("User ID: ", userId);
-    axios.get("http://localhost:3300/api/userInfo").then(res => {
-      console.log(res.data[userId - 1]);
-      this.setState({
-        user: res.data[userId - 1]
+    if (localStorage.getItem("user") !== null) {
+      axios.get("http://localhost:3300/api/userInfo").then(res => {
+        console.log(res.data[userId - 1]);
+        this.setState({
+          user: res.data[userId - 1]
+        });
       });
-    });
+    }
   };
-  componentWillMount() {
+  logout = () => {
+    localStorage.removeItem("user");
+    localStorage.setItem("loggedIn", "false");
     this.getUserData();
-    this.setState({
-      loggedIn: this.state.user != {} ? true : false
-    });
+  };
+  // componentWillMount() {
+  //   this.getUserData();
+  // }
+  componentDidMount() {
+    // this.getUserData();
+    if (localStorage.getItem("user") !== null) {
+      localStorage.setItem("loggedIn", "true");
+    }
+    this.getUserData();
+  }
+  componentDidUpdate() {
+    // this.getUserData();
+    if (localStorage.getItem("user") !== null) {
+      localStorage.setItem("loggedIn", "true");
+    }
+    this.getUserData();
   }
   render() {
-    if (this.state.loggedIn) {
+    if (localStorage.getItem("loggedIn") === "true") {
       return (
         <div className="App">
           <Route
@@ -91,6 +111,7 @@ class App extends Component {
                 {...props}
                 consoleTest={this.consoleTest}
                 user={this.state.user}
+                logout={this.logout}
               />
             )}
           />

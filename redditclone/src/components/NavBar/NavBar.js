@@ -24,6 +24,8 @@ class NavBar extends React.Component {
         <SearchIcons />
         <UserIcons />
         <User user={this.props.user} />
+        {/* logout button */}
+        <button onClick={this.props.logout}>Log Out</button>
       </header>
     );
   }
