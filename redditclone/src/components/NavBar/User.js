@@ -9,7 +9,12 @@ class User extends React.Component {
   render() {
     return (
       <div className="user">
-        <h2>{this.props.user.username}</h2>
+        {/* <h2>{this.props.user.username}</h2> */}
+        {this.props.user ? (
+          <h2>{this.props.user.username}</h2>
+        ) : (
+          <h2>Username</h2>
+        )}
         <p>10 karma</p>
       </div>
     );

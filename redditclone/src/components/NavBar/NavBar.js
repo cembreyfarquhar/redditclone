@@ -22,7 +22,7 @@ class NavBar extends React.Component {
         <DropDownSearch />
         <SearchBar />
         <SearchIcons />
-        <UserIcons />
+        <UserIcons createButton={this.props.createButton} />
         <User user={this.props.user} />
         {/* logout button */}
         <button onClick={this.props.logout}>Log Out</button>

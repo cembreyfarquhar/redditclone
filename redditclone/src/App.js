@@ -80,6 +80,9 @@ class App extends Component {
     localStorage.removeItem("user");
     localStorage.setItem("loggedIn", "false");
     this.getUserData();
+    this.setState({
+      user: null
+    });
   };
   // componentWillMount() {
   //   this.getUserData();
@@ -88,15 +91,20 @@ class App extends Component {
     // this.getUserData();
     if (localStorage.getItem("user") !== null) {
       localStorage.setItem("loggedIn", "true");
+      this.getUserData();
     }
-    this.getUserData();
   }
   componentDidUpdate() {
     // this.getUserData();
     if (localStorage.getItem("user") !== null) {
       localStorage.setItem("loggedIn", "true");
+      if (!this.state.user) {
+        console.log("Gettting data!!");
+        this.getUserData();
+      }
+    } else {
+      localStorage.setItem("loggedIn", "false");
     }
-    this.getUserData();
   }
   render() {
     if (localStorage.getItem("loggedIn") === "true") {
@@ -157,8 +165,10 @@ class App extends Component {
           <Route
             to
             exact
-            path="/r/create"
-            render={props => <CreateSubreddit {...props} />}
+            path="/create"
+            render={props => (
+              <CreateSubreddit {...props} something={this.something} />
+            )}
           />
         </div>
       );
