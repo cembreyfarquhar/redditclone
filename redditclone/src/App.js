@@ -123,6 +123,14 @@ class App extends Component {
               />
             )}
           />
+          <Route
+            to
+            exact
+            path="/create"
+            render={props => (
+              <CreateSubreddit {...props} something={this.something} />
+            )}
+          />
         </div>
       );
     } else {
@@ -162,14 +170,6 @@ class App extends Component {
                 usernameText={this.usernameText}
                 passwordText={this.passwordText}
               />
-            )}
-          />
-          <Route
-            to
-            exact
-            path="/create"
-            render={props => (
-              <CreateSubreddit {...props} something={this.something} />
             )}
           />
         </div>
