@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Redirect, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import axios from "axios";
 import HomePageLoggedOut from "./pages/HomePageLoggedOut";
-import HomePageLoggedIn from "./pages/HomePaggedLoggedIn";
+import HomePageLoggedIn from "./pages/HomePageLoggedIn";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import CreateSubreddit from "./pages/CreateSubreddit";
@@ -132,7 +132,9 @@ class App extends Component {
             to
             exact
             path="/"
-            render={props => <HomePageLoggedOut {...props} />}
+            render={props => (
+              <HomePageLoggedOut {...props} createSR={this.createSR} />
+            )}
           />
           <Route
             to

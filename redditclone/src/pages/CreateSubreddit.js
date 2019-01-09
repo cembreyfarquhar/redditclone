@@ -1,6 +1,10 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class CreateSubreddit extends React.Component {
+  componentDidMount() {
+    console.log("Create mounted");
+  }
   render() {
     return (
       <div className="createSubReddit">
@@ -11,4 +15,4 @@ class CreateSubreddit extends React.Component {
   }
 }
 
-export default CreateSubreddit;
+export default withRouter(CreateSubreddit);

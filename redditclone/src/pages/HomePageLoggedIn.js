@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar.js";
-import PostCardContainer from "../components/PostCard/PostCardContainer";
+import PostCardContainer from "../components/PostCard/PostCardContainer.js";
 
 class HomePageLoggedIn extends React.Component {
   constructor() {
@@ -11,6 +11,12 @@ class HomePageLoggedIn extends React.Component {
     ev.preventDefault();
     this.props.history.push("/create");
   };
+  componentDidMount() {
+    console.log("Homeloggedin mounted");
+  }
+  componentDidUpdate() {
+    console.log("Homeloggedin updated");
+  }
   render() {
     return (
       <div className="App">
