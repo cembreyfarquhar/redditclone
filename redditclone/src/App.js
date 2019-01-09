@@ -127,9 +127,7 @@ class App extends Component {
             to
             exact
             path="/create"
-            render={props => (
-              <CreateSubreddit {...props} something={this.something} />
-            )}
+            render={props => <CreateSubreddit {...props} />}
           />
         </div>
       );
@@ -140,9 +138,7 @@ class App extends Component {
             to
             exact
             path="/"
-            render={props => (
-              <HomePageLoggedOut {...props} createSR={this.createSR} />
-            )}
+            render={props => <HomePageLoggedOut {...props} />}
           />
           <Route
             to
